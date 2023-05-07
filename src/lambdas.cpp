@@ -83,7 +83,8 @@ void testLambdasForEraseInWholeVector() {
    }
    cout  << endl;
 
-   auto isToErase = [](int i){ return i == 3;};
+   //Explicit declaration of the returning type !!!
+   auto isToErase = [](int i) -> bool { return i == 3;};
    vec.erase( std::remove_if( vec.begin(), vec.end(), isToErase),
               vec.end());
    cout << "After erasing vec.size() = " << vec.size() << ":" << endl;
