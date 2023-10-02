@@ -260,7 +260,7 @@ int main( int argc, char *argv[] ) {
    printHeader();
 
    std::atexit([]() {
-      std::cout << endl << "good bye..." << endl;
+      std::cout << endl << "good bye... Surprise ;-)" << endl;
    });
 
    auto plus = [value = 1](int x){ return x + value; };
@@ -272,6 +272,7 @@ int main( int argc, char *argv[] ) {
    cout << "kitten: " << kitten() << ", cat: " << cat() << endl;
    g = 20;
    cout << "kitten: " << kitten() << ", cat: " << cat() << endl;
+
    //testContainsTitleLambdas();
    //testLambdaMutableState();
    //testLambdasForEraseInWholeVector();
@@ -286,6 +287,20 @@ int main( int argc, char *argv[] ) {
    testLambdaByValue2();
    testLambdaByValue3();
    cout << endl;
+
+
+   //An example taken from the lecture "Back To Basics: Lambda Expressions" by Barbara Geller & Ansel Sermersheim
+   int x = 44;
+   auto lambdaByValue = [ x ] () {
+      cout << "lambdaByValue = x: " << x << endl;
+   };
+   auto lambdaByReference = [ & x ] () {
+      cout << "lambdaByRefernce = x: " << x << endl;
+   };
+   x = 17;
+   cout << "Current value of x: " << x << endl;
+   lambdaByValue();
+   lambdaByReference();
 
    return 0;
 }
